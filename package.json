@@ -1,0 +1,18 @@
+{
+  "name": "model-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.tsp",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "npx tsp compile .\\main.tsp --emit=@microsoft/typespec-msgraph"
+  },
+  "keywords": [
+    "ts"
+  ],
+  "author": "Me",
+  "license": "ISC",
+  "dependencies": {
+    "@microsoft/typespec-msgraph-reference-prod-beta": "0.0.1-Preview.1"
+  }
+}

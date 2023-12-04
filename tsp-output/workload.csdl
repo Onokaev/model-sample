@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="microsoft.graph" xmlns="http://docs.oasis-open.org/odata/ns/edm" xmlns:ags="http://aggregator.microsoft.com/internal">
+      <EntityType Name="something" ags:IsOwner="true">
+        <Key>
+          <PropertyRef Name="id"/>
+        </Key>
+        <Property Name="id" Type="Edm.String" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="user" ags:IsOwner="false">
+        <Property Name="someName" Type="Edm.String" Nullable="false"/>
+      </EntityType>
+      <EntityContainer Name="container"/>
+    </Schema>
+    <Schema Namespace="microsoft.graph" xmlns="http://docs.oasis-open.org/odata/ns/edm" xmlns:ags="http://aggregator.microsoft.com/internal">
+      <EnumType Name="externalAudienceScope">
+        <Member Name="none"/>
+        <Member Name="contactsOnly"/>
+        <Member Name="all"/>
+        <Member Name="unknownFutureValue"/>
+      </EnumType>
+      <EnumType Name="automaticRepliesStatus">
+        <Member Name="disabled"/>
+        <Member Name="alwaysEnabled"/>
+        <Member Name="scheduled"/>
+        <Member Name="unknownFutureValue"/>
+      </EnumType>
+      <EnumType Name="delegateMeetingMessageDeliveryOptions">
+        <Member Name="sendToDelegateAndInformationToPrincipal"/>
+        <Member Name="sendToDelegateAndPrincipal"/>
+        <Member Name="sendToDelegateOnly"/>
+        <Member Name="unknownFutureValue"/>
+      </EnumType>
+      <EnumType Name="userPurpose">
+        <Member Name="unknown"/>
+        <Member Name="user"/>
+        <Member Name="linked"/>
+        <Member Name="shared"/>
+        <Member Name="room"/>
+        <Member Name="equipment"/>
+        <Member Name="others"/>
+        <Member Name="unknownFutureValue"/>
+      </EnumType>
+      <EnumType Name="mailboxRecipientType">
+        <Member Name="unknown"/>
+        <Member Name="user"/>
+        <Member Name="linked"/>
+        <Member Name="shared"/>
+        <Member Name="room"/>
+        <Member Name="equipment"/>
+        <Member Name="others"/>
+        <Member Name="unknownFutureValue"/>
+      </EnumType>
+      <EnumType Name="dayOfWeek">
+        <Member Name="sunday"/>
+        <Member Name="monday"/>
+        <Member Name="tuesday"/>
+        <Member Name="wednesday"/>
+        <Member Name="thursday"/>
+        <Member Name="friday"/>
+        <Member Name="saturday"/>
+        <Member Name="unknownFutureValue"/>
+      </EnumType>
+      <EnumType Name="groupAccessType">
+        <Member Name="none"/>
+        <Member Name="private"/>
+        <Member Name="secret"/>
+        <Member Name="public"/>
+        <Member Name="unknownFutureValue"/>
+      </EnumType>
+      <EnumType Name="MembershipRuleProcessingStatusDetails">
+        <Member Name="NotStarted"/>
+        <Member Name="Running"/>
+        <Member Name="Failed"/>
+        <Member Name="Succeeded"/>
+        <Member Name="UnsupportedFutureValue"/>
+        <Member Name="unknownFutureValue"/>
+      </EnumType>
+      <EntityType Name="entity" Abstract="true" ags:IsOwner="false">
+        <Key>
+          <PropertyRef Name="id"/>
+        </Key>
+        <Property Name="id" Type="Edm.String" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="directoryObject" BaseType="reference.microsoft.graph.entity" OpenType="true" ags:IsOwner="false">
+        <Property Name="deletedDateTime" Type="offsetDateTime"/>
+      </EntityType>
+      <EntityType Name="user" BaseType="reference.microsoft.graph.directoryObject" OpenType="true" ags:IsOwner="false">
+        <Property Name="aboutMe" Type="Edm.String"/>
+        <Property Name="accountEnabled" Type="Edm.Boolean"/>
+        <Property Name="ageGroup" Type="Edm.String"/>
+        <Property Name="assignedLicenses" Type="Collection(reference.microsoft.graph.assignedLicense)" Nullable="false"/>
+        <Property Name="assignedPlans" Type="Collection(reference.microsoft.graph.assignedPlan)" Nullable="false"/>
+        <Property Name="authorizationInfo" Type="reference.microsoft.graph.authorizationInfo"/>
+        <Property Name="birthday" Type="offsetDateTime" Nullable="false"/>
+        <Property Name="businessPhones" Type="Collection(Edm.String)" Nullable="false"/>
+        <Property Name="city" Type="Edm.String"/>
+        <Property Name="cloudRealtimeCommunicationInfo" Type="reference.microsoft.graph.cloudRealtimeCommunicationInfo"/>
+        <Property Name="companyName" Type="Edm.String"/>
+        <Property Name="consentProvidedForMinor" Type="Edm.String"/>
+        <Property Name="country" Type="Edm.String"/>
+        <Property Name="createdDateTime" Type="offsetDateTime"/>
+        <Property Name="creationType" Type="Edm.String"/>
+        <Property Name="customSecurityAttributes" Type="reference.microsoft.graph.customSecurityAttributeValue"/>
+        <Property Name="department" Type="Edm.String"/>
+        <Property Name="deviceEnrollmentLimit" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="deviceKeys" Type="Collection(reference.microsoft.graph.deviceKey)" Nullable="false"/>
+        <Property Name="displayName" Type="Edm.String"/>
+        <Property Name="employeeHireDate" Type="offsetDateTime"/>
+        <Property Name="employeeId" Type="Edm.String"/>
+        <Property Name="employeeLeaveDateTime" Type="offsetDateTime"/>
+        <Property Name="employeeOrgData" Type="reference.microsoft.graph.employeeOrgData"/>
+        <Property Name="employeeType" Type="Edm.String"/>
+        <Property Name="externalUserState" Type="Edm.String"/>
+        <Property Name="externalUserStateChangeDateTime" Type="Edm.String"/>
+        <Property Name="faxNumber" Type="Edm.String"/>
+        <Property Name="givenName" Type="Edm.String"/>
+        <Property Name="hireDate" Type="offsetDateTime" Nullable="false"/>
+        <Property Name="identities" Type="Collection(reference.microsoft.graph.objectIdentity)"/>
+        <Property Name="imAddresses" Type="Collection(Edm.String)"/>
+        <Property Name="infoCatalogs" Type="Collection(Edm.String)" Nullable="false"/>
+        <Property Name="interests" Type="Collection(Edm.String)"/>
+        <Property Name="isLicenseReconciliationNeeded" Type="Edm.Boolean"/>
+        <Property Name="isManagementRestricted" Type="Edm.Boolean"/>
+        <Property Name="isResourceAccount" Type="Edm.Boolean"/>
+        <Property Name="jobTitle" Type="Edm.String"/>
+        <Property Name="lastPasswordChangeDateTime" Type="offsetDateTime"/>
+        <Property Name="legalAgeGroupClassification" Type="Edm.String"/>
+        <Property Name="licenseAssignmentStates" Type="Collection(reference.microsoft.graph.licenseAssignmentState)"/>
+        <Property Name="mail" Type="Edm.String"/>
+        <Property Name="mailboxSettings" Type="reference.microsoft.graph.mailboxSettings"/>
+        <Property Name="mailNickname" Type="Edm.String"/>
+        <Property Name="mobilePhone" Type="Edm.String"/>
+        <Property Name="mySite" Type="Edm.String"/>
+        <Property Name="officeLocation" Type="Edm.String"/>
+        <Property Name="onPremisesDistinguishedName" Type="Edm.String"/>
+        <Property Name="onPremisesDomainName" Type="Edm.String"/>
+        <Property Name="onPremisesExtensionAttributes" Type="reference.microsoft.graph.onPremisesExtensionAttributes"/>
+        <Property Name="onPremisesImmutableId" Type="Edm.String"/>
+        <Property Name="onPremisesLastSyncDateTime" Type="offsetDateTime"/>
+        <Property Name="onPremisesProvisioningErrors" Type="Collection(reference.microsoft.graph.onPremisesProvisioningError)"/>
+        <Property Name="onPremisesSamAccountName" Type="Edm.String"/>
+        <Property Name="onPremisesSecurityIdentifier" Type="Edm.String"/>
+        <Property Name="onPremisesSipInfo" Type="reference.microsoft.graph.onPremisesSipInfo"/>
+        <Property Name="onPremisesSyncEnabled" Type="Edm.Boolean"/>
+        <Property Name="onPremisesUserPrincipalName" Type="Edm.String"/>
+        <Property Name="otherMails" Type="Collection(Edm.String)" Nullable="false"/>
+        <Property Name="passwordPolicies" Type="Edm.String"/>
+        <Property Name="passwordProfile" Type="reference.microsoft.graph.passwordProfile"/>
+        <Property Name="pastProjects" Type="Collection(Edm.String)"/>
+        <Property Name="postalCode" Type="Edm.String"/>
+        <Property Name="preferredDataLocation" Type="Edm.String"/>
+        <Property Name="preferredLanguage" Type="Edm.String"/>
+        <Property Name="preferredName" Type="Edm.String"/>
+        <Property Name="print" Type="reference.microsoft.graph.userPrint"/>
+        <Property Name="provisionedPlans" Type="Collection(reference.microsoft.graph.provisionedPlan)" Nullable="false"/>
+        <Property Name="proxyAddresses" Type="Collection(Edm.String)" Nullable="false"/>
+        <Property Name="refreshTokensValidFromDateTime" Type="offsetDateTime"/>
+        <Property Name="responsibilities" Type="Collection(Edm.String)"/>
+        <Property Name="schools" Type="Collection(Edm.String)"/>
+        <Property Name="securityIdentifier" Type="Edm.String"/>
+        <Property Name="serviceProvisioningErrors" Type="Collection(reference.microsoft.graph.serviceProvisioningError)"/>
+        <Property Name="showInAddressList" Type="Edm.Boolean"/>
+        <Property Name="signInActivity" Type="reference.microsoft.graph.signInActivity"/>
+        <Property Name="signInSessionsValidFromDateTime" Type="offsetDateTime"/>
+        <Property Name="skills" Type="Collection(Edm.String)"/>
+        <Property Name="state" Type="Edm.String"/>
+        <Property Name="streetAddress" Type="Edm.String"/>
+        <Property Name="surname" Type="Edm.String"/>
+        <Property Name="usageLocation" Type="Edm.String"/>
+        <Property Name="userPrincipalName" Type="Edm.String"/>
+        <Property Name="userType" Type="Edm.String"/>
+        <NavigationProperty Name="manager" Type="reference.microsoft.graph.directoryObject" ags:IsOwner="false"/>
+        <NavigationProperty Name="directReports" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+        <NavigationProperty Name="memberOf" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+        <NavigationProperty Name="transitiveMemberOf" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+        <NavigationProperty Name="transitiveReports" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+        <NavigationProperty Name="joinedGroups" Type="Collection(reference.microsoft.graph.group)" ContainsTarget="true" ags:IsOwner="false"/>
+        <NavigationProperty Name="ownedDevices" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+        <NavigationProperty Name="ownedObjects" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+        <NavigationProperty Name="registeredDevices" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+        <NavigationProperty Name="createdObjects" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+      </EntityType>
+      <ComplexType Name="assignedLicense">
+        <Property Name="disabledPlans" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="skuId" Type="Edm.Guid"/>
+      </ComplexType>
+      <ComplexType Name="assignedPlan">
+        <Property Name="assignedDateTime" Type="offsetDateTime"/>
+        <Property Name="capabilityStatus" Type="Edm.String"/>
+        <Property Name="service" Type="Edm.String"/>
+        <Property Name="servicePlanId" Type="Edm.Guid"/>
+      </ComplexType>
+      <ComplexType Name="authorizationInfo">
+        <Property Name="certificateUserIds" Type="Collection(Edm.String)"/>
+      </ComplexType>
+      <ComplexType Name="cloudRealtimeCommunicationInfo">
+        <Property Name="isSipEnabled" Type="Edm.Boolean"/>
+      </ComplexType>
+      <ComplexType Name="customSecurityAttributeValue" OpenType="true"/>
+      <ComplexType Name="deviceKey">
+        <Property Name="deviceId" Type="Edm.Guid"/>
+        <Property Name="keyMaterial" Type="binary"/>
+        <Property Name="keyType" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="employeeOrgData">
+        <Property Name="costCenter" Type="Edm.String"/>
+        <Property Name="division" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="objectIdentity">
+        <Property Name="issuer" Type="Edm.String"/>
+        <Property Name="issuerAssignedId" Type="Edm.String"/>
+        <Property Name="signInType" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="licenseAssignmentState">
+        <Property Name="assignedByGroup" Type="Edm.String"/>
+        <Property Name="disabledPlans" Type="Edm.Guid"/>
+        <Property Name="error" Type="Edm.String"/>
+        <Property Name="lastUpdatedDateTime" Type="offsetDateTime"/>
+        <Property Name="skuId" Type="Edm.Guid"/>
+        <Property Name="state" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="mailboxSettings">
+        <Property Name="archiveFolder" Type="Edm.String"/>
+        <Property Name="automaticRepliesSetting" Type="reference.microsoft.graph.automaticRepliesSetting"/>
+        <Property Name="dateFormat" Type="Edm.String"/>
+        <Property Name="delegateMeetingMessageDeliveryOptions" Type="reference.microsoft.graph.delegateMeetingMessageDeliveryOptions"/>
+        <Property Name="language" Type="reference.microsoft.graph.localeInfo"/>
+        <Property Name="timeFormat" Type="Edm.String"/>
+        <Property Name="timeZone" Type="Edm.String"/>
+        <Property Name="userPurpose" Type="reference.microsoft.graph.userPurpose"/>
+        <Property Name="userPurposeV2" Type="reference.microsoft.graph.mailboxRecipientType"/>
+        <Property Name="workingHours" Type="reference.microsoft.graph.workingHours"/>
+      </ComplexType>
+      <ComplexType Name="automaticRepliesSetting">
+        <Property Name="externalAudience" Type="reference.microsoft.graph.externalAudienceScope"/>
+        <Property Name="externalReplyMessage" Type="Edm.String"/>
+        <Property Name="internalReplyMessage" Type="Edm.String"/>
+        <Property Name="scheduledEndDateTime" Type="reference.microsoft.graph.dateTimeTimeZone"/>
+        <Property Name="scheduledStartDateTime" Type="reference.microsoft.graph.dateTimeTimeZone"/>
+        <Property Name="status" Type="reference.microsoft.graph.automaticRepliesStatus"/>
+      </ComplexType>
+      <ComplexType Name="dateTimeTimeZone">
+        <Property Name="dateTime" Type="Edm.String" Nullable="false"/>
+        <Property Name="timeZone" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="localeInfo">
+        <Property Name="displayName" Type="Edm.String"/>
+        <Property Name="locale" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="workingHours">
+        <Property Name="daysOfWeek" Type="Collection(reference.microsoft.graph.dayOfWeek)"/>
+        <Property Name="endTime" Type="offsetDateTime"/>
+        <Property Name="startTime" Type="offsetDateTime"/>
+        <Property Name="timeZone" Type="reference.microsoft.graph.timeZoneBase"/>
+      </ComplexType>
+      <ComplexType Name="timeZoneBase">
+        <Property Name="name" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="onPremisesExtensionAttributes">
+        <Property Name="extensionAttribute1" Type="Edm.String"/>
+        <Property Name="extensionAttribute10" Type="Edm.String"/>
+        <Property Name="extensionAttribute11" Type="Edm.String"/>
+        <Property Name="extensionAttribute12" Type="Edm.String"/>
+        <Property Name="extensionAttribute13" Type="Edm.String"/>
+        <Property Name="extensionAttribute14" Type="Edm.String"/>
+        <Property Name="extensionAttribute15" Type="Edm.String"/>
+        <Property Name="extensionAttribute2" Type="Edm.String"/>
+        <Property Name="extensionAttribute3" Type="Edm.String"/>
+        <Property Name="extensionAttribute4" Type="Edm.String"/>
+        <Property Name="extensionAttribute5" Type="Edm.String"/>
+        <Property Name="extensionAttribute6" Type="Edm.String"/>
+        <Property Name="extensionAttribute7" Type="Edm.String"/>
+        <Property Name="extensionAttribute8" Type="Edm.String"/>
+        <Property Name="extensionAttribute9" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="onPremisesProvisioningError">
+        <Property Name="category" Type="Edm.String"/>
+        <Property Name="occurredDateTime" Type="offsetDateTime"/>
+        <Property Name="propertyCausingError" Type="Edm.String"/>
+        <Property Name="value" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="onPremisesSipInfo">
+        <Property Name="isSipEnabled" Type="Edm.Boolean" Nullable="false"/>
+        <Property Name="sipDeploymentLocation" Type="Edm.String"/>
+        <Property Name="sipPrimaryAddress" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="passwordProfile">
+        <Property Name="forceChangePasswordNextSignIn" Type="Edm.Boolean"/>
+        <Property Name="forceChangePasswordNextSignInWithMfa" Type="Edm.Boolean"/>
+        <Property Name="password" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="userPrint"/>
+      <ComplexType Name="provisionedPlan">
+        <Property Name="capabilityStatus" Type="Edm.String"/>
+        <Property Name="provisioningStatus" Type="Edm.String"/>
+        <Property Name="service" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="serviceProvisioningError" Abstract="true">
+        <Property Name="createdDateTime" Type="offsetDateTime"/>
+        <Property Name="isResolved" Type="Edm.Boolean"/>
+        <Property Name="serviceInstance" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="signInActivity">
+        <Property Name="lastNonInteractiveSignInDateTime" Type="offsetDateTime"/>
+        <Property Name="lastNonInteractiveSignInRequestId" Type="Edm.String"/>
+        <Property Name="lastSignInDateTime" Type="offsetDateTime"/>
+        <Property Name="lastSignInRequestId" Type="Edm.String"/>
+      </ComplexType>
+      <EntityType Name="group" BaseType="reference.microsoft.graph.directoryObject" OpenType="true" ags:IsOwner="false">
+        <Property Name="accessType" Type="reference.microsoft.graph.groupAccessType"/>
+        <Property Name="allowExternalSenders" Type="Edm.Boolean"/>
+        <Property Name="assignedLabels" Type="Collection(reference.microsoft.graph.assignedLabel)"/>
+        <Property Name="assignedLicenses" Type="Collection(reference.microsoft.graph.assignedLicense)"/>
+        <Property Name="autoSubscribeNewMembers" Type="Edm.Boolean"/>
+        <Property Name="classification" Type="Edm.String"/>
+        <Property Name="createdByAppId" Type="Edm.String"/>
+        <Property Name="createdDateTime" Type="offsetDateTime"/>
+        <Property Name="description" Type="Edm.String"/>
+        <Property Name="displayName" Type="Edm.String"/>
+        <Property Name="expirationDateTime" Type="offsetDateTime"/>
+        <Property Name="groupTypes" Type="Collection(Edm.String)" Nullable="false"/>
+        <Property Name="hasMembersWithLicenseErrors" Type="Edm.Boolean"/>
+        <Property Name="hideFromAddressLists" Type="Edm.Boolean"/>
+        <Property Name="hideFromOutlookClients" Type="Edm.Boolean"/>
+        <Property Name="infoCatalogs" Type="Collection(Edm.String)" Nullable="false"/>
+        <Property Name="isArchived" Type="Edm.Boolean"/>
+        <Property Name="isAssignableToRole" Type="Edm.Boolean"/>
+        <Property Name="isFavorite" Type="Edm.Boolean"/>
+        <Property Name="isManagementRestricted" Type="Edm.Boolean"/>
+        <Property Name="isSubscribedByMail" Type="Edm.Boolean"/>
+        <Property Name="licenseProcessingState" Type="reference.microsoft.graph.licenseProcessingState"/>
+        <Property Name="mail" Type="Edm.String"/>
+        <Property Name="mailEnabled" Type="Edm.Boolean"/>
+        <Property Name="mailNickname" Type="Edm.String"/>
+        <Property Name="membershipRule" Type="Edm.String"/>
+        <Property Name="membershipRuleProcessingState" Type="Edm.String"/>
+        <Property Name="membershipRuleProcessingStatus" Type="reference.microsoft.graph.membershipRuleProcessingStatus"/>
+        <Property Name="onPremisesDomainName" Type="Edm.String"/>
+        <Property Name="onPremisesLastSyncDateTime" Type="offsetDateTime"/>
+        <Property Name="onPremisesNetBiosName" Type="Edm.String"/>
+        <Property Name="onPremisesProvisioningErrors" Type="Collection(reference.microsoft.graph.onPremisesProvisioningError)"/>
+        <Property Name="onPremisesSamAccountName" Type="Edm.String"/>
+        <Property Name="onPremisesSecurityIdentifier" Type="Edm.String"/>
+        <Property Name="onPremisesSyncEnabled" Type="Edm.Boolean"/>
+        <Property Name="organizationId" Type="Edm.String"/>
+        <Property Name="preferredDataLocation" Type="Edm.String"/>
+        <Property Name="preferredLanguage" Type="Edm.String"/>
+        <Property Name="proxyAddresses" Type="Collection(Edm.String)" Nullable="false"/>
+        <Property Name="renewedDateTime" Type="offsetDateTime"/>
+        <Property Name="resourceBehaviorOptions" Type="Collection(Edm.String)" Nullable="false"/>
+        <Property Name="resourceProvisioningOptions" Type="Collection(Edm.String)" Nullable="false"/>
+        <Property Name="securityEnabled" Type="Edm.Boolean"/>
+        <Property Name="securityIdentifier" Type="Edm.String"/>
+        <Property Name="serviceProvisioningErrors" Type="Collection(reference.microsoft.graph.serviceProvisioningError)"/>
+        <Property Name="theme" Type="Edm.String"/>
+        <Property Name="uniqueName" Type="Edm.String"/>
+        <Property Name="unseenConversationsCount" Type="Edm.Int32"/>
+        <Property Name="unseenCount" Type="Edm.Int32"/>
+        <Property Name="unseenMessagesCount" Type="Edm.Int32"/>
+        <Property Name="visibility" Type="Edm.String"/>
+        <Property Name="writebackConfiguration" Type="reference.microsoft.graph.groupWritebackConfiguration"/>
+        <NavigationProperty Name="acceptedSenders" Type="Collection(reference.microsoft.graph.directoryObject)" ContainsTarget="true" ags:IsOwner="false"/>
+        <NavigationProperty Name="createdOnBehalfOf" Type="reference.microsoft.graph.directoryObject" ags:IsOwner="false"/>
+        <NavigationProperty Name="memberOf" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+        <NavigationProperty Name="members" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+        <NavigationProperty Name="membersWithLicenseErrors" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+        <NavigationProperty Name="owners" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+        <NavigationProperty Name="rejectedSenders" Type="Collection(reference.microsoft.graph.directoryObject)" ContainsTarget="true" ags:IsOwner="false"/>
+        <NavigationProperty Name="transitiveMemberOf" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+        <NavigationProperty Name="transitiveMembers" Type="Collection(reference.microsoft.graph.directoryObject)" ags:IsOwner="false"/>
+      </EntityType>
+      <ComplexType Name="assignedLabel">
+        <Property Name="displayName" Type="Edm.String"/>
+        <Property Name="labelId" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="licenseProcessingState">
+        <Property Name="state" Type="Edm.String"/>
+      </ComplexType>
+      <ComplexType Name="membershipRuleProcessingStatus">
+        <Property Name="errorMessage" Type="Edm.String"/>
+        <Property Name="lastMembershipUpdated" Type="offsetDateTime"/>
+        <Property Name="status" Type="reference.microsoft.graph.MembershipRuleProcessingStatusDetails"/>
+      </ComplexType>
+      <ComplexType Name="writebackConfiguration">
+        <Property Name="isEnabled" Type="Edm.Boolean" Nullable="false"/>
+      </ComplexType>
+      <ComplexType Name="groupWritebackConfiguration" BaseType="reference.microsoft.graph.writebackConfiguration">
+        <Property Name="onPremisesGroupType" Type="Edm.String"/>
+      </ComplexType>
+      <EntityContainer Name="container"/>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
