@@ -1,0 +1,7 @@
+output-dir: "{cwd}"
+emit:
+  - "@microsoft/typespec-msgraph"
+options:
+  "@microsoft/typespec-msgraph":
+     filename: main.csdl
+

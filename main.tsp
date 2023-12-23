@@ -7,10 +7,7 @@ using reference.microsoft.graph;
 namespace Example {
     @entity model something {
         @key id: string;
+        @references createdBy: reference.microsoft.graph.user;
     }
 
-    @partial(reference.microsoft.graph.user)
-    @entity model user{
-        someName: string;
-    }
 }

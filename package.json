@@ -5,7 +5,7 @@
   "main": "main.tsp",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "npx tsp compile .\\main.tsp --emit=@microsoft/typespec-msgraph"
+    "compile": "tsp compile .\\main.tsp"
   },
   "keywords": [
     "ts"
@@ -13,6 +13,7 @@
   "author": "Me",
   "license": "ISC",
   "dependencies": {
+    "@microsoft/typespec-msgraph": "0.0.1-Preview.12",
     "@microsoft/typespec-msgraph-reference-prod-beta": "0.0.1-Preview.1"
   }
 }
